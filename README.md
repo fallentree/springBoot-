@@ -6,6 +6,7 @@
 maven, tomcat
 1、创建
 1.1 使用spring initializr（Create Spring Boot applications using Spring Boot Starters)初始化spring boot
+
 1.2 填写的metadata中：Group就是groupId，Artifact就是artifactId
     a、groupId一般分为多个段，常常是域名的倒写。如org.apache.apache，artigactId是tomcat。
 　　比如创建一个项目，将groupId设置为cn.edu.tju，cn表示域为中国，artifactId设置为demo，表示你这个项目的名称是demo
