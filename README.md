@@ -57,7 +57,16 @@ maven, tomcat
       c、spring？：Spring IOC 帮助整合Service以及Service的所有依赖  ==> xml 依赖注入 / 基于注解依赖注入
       controller开发
       
-      
+# ssm和spring boot有什么区别呢
+
+参考https://www.cnblogs.com/fightingting/p/10587613.html
+
+重要的一点在于springboot 提供的 starter 依赖为我们做了很多配置功能。ssm中web.xml里面写的很多依赖，在spring boot中都不用写。
+比如tomcat的配置，ssm就比spring boot复杂，spring boot自己便集成了tomcat
+
+配置mybatis
+
+参考 https://blog.csdn.net/weixin_43094917/article/details/85720969 ，很简单的配置
       
       
   3.2 文件结构
@@ -81,3 +90,7 @@ maven, tomcat
 	      ---sql
 	   ---test
 
+# 从底端开始
+
+  3.3 数据库设计和编码
+  
