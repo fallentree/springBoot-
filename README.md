@@ -50,11 +50,13 @@ maven, tomcat
   
   3.1 涉及技术
   
-      a、数据库：注意数据库的规范
+  a、数据库：注意数据库的规范
       
-      b、mybatis：dao（data access object，一个面向对象的数据库接口）层的设计与开发。（基于注解或xml完成sql语句）
+  b、mybatis：dao（data access object，一个面向对象的数据库接口）层的设计与开发。（基于注解或xml完成sql语句）
       
-      Mybatis在转换Result到需要的Java业务对象时做的三件事，如下:
+  基于xml完成sql语句：需要使用mapper-locations，来告诉mybatis使用的xml所在文件夹，具体参考：https://blog.csdn.net/qq_27130997/article/details/81077789
+      
+  Mybatis在转换Result到需要的Java业务对象时做的三件事，如下:
       
       1. 解决了数据库列名到Java列名的映射。
       
@@ -62,9 +64,11 @@ maven, tomcat
       
       3.在转换过程中具备一定的容错能力。
       
-      具体是如何将数据库列名转换成对象属性名的参考：http://www.importnew.com/25871.html
+  具体是如何将数据库列名转换成对象属性名的参考：http://www.importnew.com/25871.html
       
-      c、spring？：Spring IOC 帮助整合Service以及Service的所有依赖  ==> xml 依赖注入 / 基于注解依赖注入
+  mybatis驼峰命名转换的开启参考：https://blog.csdn.net/zhao0416/article/details/78427191 以及官方文档 http://www.mybatis.org/mybatis-3/zh/configuration.html ，该设置项默认为false
+      
+  c、spring？：Spring IOC 帮助整合Service以及Service的所有依赖  ==> xml 依赖注入 / 基于注解依赖注入
       controller开发
       
 # ssm和spring boot有什么区别呢
