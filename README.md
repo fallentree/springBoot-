@@ -54,6 +54,16 @@ maven, tomcat
       
       b、mybatis：dao（data access object，一个面向对象的数据库接口）层的设计与开发。（基于注解或xml完成sql语句）
       
+      Mybatis在转换Result到需要的Java业务对象时做的三件事，如下:
+      
+      1. 解决了数据库列名到Java列名的映射。
+      
+      2.解决了数据库类型到Java类型的转换工作。
+      
+      3.在转换过程中具备一定的容错能力。
+      
+      具体是如何将数据库列名转换成对象属性名的参考：http://www.importnew.com/25871.html
+      
       c、spring？：Spring IOC 帮助整合Service以及Service的所有依赖  ==> xml 依赖注入 / 基于注解依赖注入
       controller开发
       
@@ -67,6 +77,8 @@ maven, tomcat
 配置mybatis
 
 参考 https://blog.csdn.net/weixin_43094917/article/details/85720969 ，很简单的配置
+
+
       
       
   3.2 文件结构
