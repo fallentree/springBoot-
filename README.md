@@ -54,6 +54,9 @@ maven, tomcat
       
       b、mybatis：dao（data access object，一个面向对象的数据库接口）层的设计与开发。（基于注解或xml完成sql语句）
       
+      c、spring？：Spring IOC 帮助整合Service以及Service的所有依赖  ==> xml 依赖注入 / 基于注解依赖注入
+      controller开发
+      
       
       
       
