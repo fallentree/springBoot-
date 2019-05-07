@@ -60,5 +60,20 @@ maven, tomcat
   3.2 文件结构
   
   文件结构不是为了固定化，模式化地，僵硬地进行对照，而是为了提供更加清晰的思路，明确整个项目都有什么。
-  
+  	---src
+	   ---main
+	      ---java（业务代码）
+	         ---com.example.demo...
+		 >projectnameApplication.java(整个项目main函数）
+		    ---controller
+		    ---dao
+		    ---dto
+		    .
+		    .
+		    .
+		    ---service
+	      ---resource（.yml/.xml/.poroperties）
+	         >application.yml(application.properties)（很多相关配置信息，诸如数据库的用户密码）
+	      ---sql
+	   ---test
 
