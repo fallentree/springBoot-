@@ -131,7 +131,7 @@ maven, tomcat
   
   考虑：
   
-  	1、实体对象 entity
+  	1、实体对象 entity 对象中的属性一般是private（为什么）
   	2、dao接口  dao
   	3、sql的编写 xml
   
