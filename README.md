@@ -126,3 +126,12 @@ maven, tomcat
   这一里明白两个问题："sql写在哪" 以及 "如何实现dao接口"
   
   dao接口需要实现，实现的方式： mapper自动实现dao接口  或者  api编程方式实现dao（=>开启connection => 创建一个statement => 得到resultSet)
+  
+  由于需要将数据库中的表映射到对象，所以我们还要设计相应的实体对象。
+  
+  考虑：
+  
+  	1、实体对象 entity
+  	2、dao接口  dao
+  	3、sql的编写 xml
+  
