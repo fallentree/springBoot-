@@ -5,7 +5,7 @@
 ------------------------------------------------------------------
 maven, tomcat
 
-1、创建
+## 1、创建
 
 1.1 使用spring initializr（Create Spring Boot applications using Spring Boot Starters)初始化spring boot
 
@@ -47,14 +47,18 @@ maven, tomcat
   yml 和 properites的配置方法在网上能容易找到，一般只需要配置：数据库驱动url、数据库驱动、用户名、密码、可以配置端口号，注意调整时区
   
   3、开始动手吧
+  
   3.1 涉及技术
+  
       a、数据库：注意数据库的规范
+      
       b、mybatis：dao（data access object，一个面向对象的数据库接口）层的设计与开发。（基于注解或xml完成sql语句）
       
       
       
       
   3.2 文件结构
+  
   文件结构不是为了固定化，模式化地，僵硬地进行对照，而是为了提供更加清晰的思路，明确整个项目都有什么。
   
 
