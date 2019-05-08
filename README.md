@@ -121,6 +121,8 @@ maven, tomcat
   
   3.4 DAO层设计
   
+  3.4.1 设计
+  
   （在这里稍微梳理一下，以便打通这一层，dao层负责数据库的访问，这一层需要设计好数据访问对象，即dao接口（注意是接口），然后通过mybatis框架能够简单地进行对象和实体之间的映射，而mybatis可以采用注解或者xml文件的方式完成这个映射，dao方面提供有参数，由我们自己编写sql进行访问数据库）
   
   这一里明白两个问题："sql写在哪" 以及 "如何实现dao接口"
@@ -157,5 +159,14 @@ maven, tomcat
   你的程序更可能会使用 JavaBean 或 POJO（Plain Old Java Objects，普通老式 Java 对象）作为领域模型。MyBatis 对两者都提供了支持。”
   
   这一段能更好地明白xml到dao实现中映射的一些关系（通过在resultType中指定自己编写的java bean，能够将数据库中的数据很好的映射到实体）。更多在http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html 的“结果映射”中。
+  
+  3.4.2 dao测试
+  spring boot使用junit进行测试一直无法完成。
+  
+  3.5 Service的编写
+  
+  Q：（宏观上）Service层和dao层区别在哪里，我为什么要有一个service层，直接用dao？
+  
+  TASK：明白每个注解都是什么意思，是真正梳理通一个小demo的关键
   
   
