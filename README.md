@@ -180,6 +180,12 @@ maven, tomcat
   
   ## Spring 管理 Service 依赖
   
-  详细的理论问题查看视频 https://www.imooc.com/video/11721 温故知新
+  理论： 详细的理论问题查看视频 https://www.imooc.com/video/11721 温故知新
   
+  配置： 
   
+  ### 3.6 controller的实现
+  
+  注解@controller以及@RequestMapping
+  
+  思考这么几个问题
