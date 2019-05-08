@@ -186,6 +186,18 @@ maven, tomcat
   
   ### 3.6 controller的实现
   
+  controller实现并启动tomcat的时候出现过这样一个问题：
+  
+  	Error creating bean with name 'userServiceImpl': Injection of resource dependencies failed; 
+	nested exception is org.springframework.beans.factory.
+	NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.demo.dao.userDao' available: expected at least 1 bean which qualifies as autowire candidate.
+  
+  并在信息中提供了warming：No MyBatis mapper was found in '[com.example.demo]' package. Please check your configuration.
+  
+  原因是：在应用入口类：XxxApplication.java中没有加入@MapperScan("")注解；解决问题时参考了：https://blog.csdn.net/qinxian20120/article/details/80255976 具体填写的是@MapperScan("com.example.demo.dao")。（有疑问）
+  
   注解@controller以及@RequestMapping
   
-  思考这么几个问题
+  1、controller中要添加@Controller注释，Service实现要添加@Service注释，以告知spring容器
+  
+  2、@RequestMapping
