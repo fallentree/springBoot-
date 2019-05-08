@@ -48,7 +48,7 @@ maven, tomcat
   
 ## 3、开始动手吧
   
-  #### 3.1 涉及技术
+  ### 3.1 涉及技术
   
   a、数据库：注意数据库的规范
       
@@ -85,7 +85,7 @@ maven, tomcat
 
       
       
-  #### 3.2 文件结构
+  ### 3.2 文件结构
   
   文件结构不是为了固定化，模式化地，僵硬地进行对照，而是为了提供更加清晰的思路，明确整个项目都有什么。
   
@@ -96,11 +96,12 @@ maven, tomcat
 		 >projectnameApplication.java(整个项目main函数）
 		    ---controller
 		    ---dao
-		    ---dto
+		    ---dto（data translation object，与entity类似，但是dto关注的是web和service之间的数据传输）
 		    .
 		    .
 		    .
-		    ---service
+		    ---exception（service层的一些异常，ps：逻辑操作产生异常）
+		    ---service（service接口）
 	      ---resource（.yml/.xml/.poroperties）
 	         >application.yml(application.properties)（很多相关配置信息，诸如数据库的用户密码）
 	      ---sql
@@ -108,7 +109,7 @@ maven, tomcat
 
 # 从底端开始
 
-  #### 3.3 数据库设计和编码（简单操作）
+  ### 3.3 数据库设计和编码（简单操作）
   
   关键几点：
   
@@ -119,7 +120,7 @@ maven, tomcat
   由于数据库涉及的并不是特别深，所以没有特别注意的地方。
   
   
-  #### 3.4 DAO层设计
+  ### 3.4 DAO层设计
   
   3.4.1 设计
   
@@ -163,10 +164,13 @@ maven, tomcat
   3.4.2 dao测试
   spring boot使用junit进行测试一直无法完成。
   
-  3.5 Service的编写
+  思考： dao层工作变成  接口编写 ==> sql编写
+  
+  ### 3.5 Service的编写
   
   Q：（宏观上）Service层和dao层区别在哪里，我为什么要有一个service层，直接用dao？
   
-  TASK：明白每个注解都是什么意思，是真正梳理通一个小demo的关键
+  #### TASK：明白每个注解都是什么意思，是真正梳理通一个小demo的关键
   
+  逻辑代码放在service编写，dao更像是对数据库的基本操作，而service针对业务逻辑，将dao中给出的基本操作进行拼接。且，service接口的编写要站在使用者（前端开发人员）的角度进行编写，而不应该站在自己的实现角度进行
   
