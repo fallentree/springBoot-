@@ -156,4 +156,6 @@ maven, tomcat
   上述语句只是简单地将所有的列映射到 HashMap 的键上，这由 resultType 属性指定。虽然在大部分情况下都够用，但是 HashMap 不是一个很好的领域模型。
   你的程序更可能会使用 JavaBean 或 POJO（Plain Old Java Objects，普通老式 Java 对象）作为领域模型。MyBatis 对两者都提供了支持。”
   
-  这一段能更好地明白xml到dao实现中映射的一些关系（通过在resultType中指定自己编写的java bean，能够将数据库中的数据很好的映射到实体）
+  这一段能更好地明白xml到dao实现中映射的一些关系（通过在resultType中指定自己编写的java bean，能够将数据库中的数据很好的映射到实体）。更多在http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html 的“结果映射”中。
+  
+  
