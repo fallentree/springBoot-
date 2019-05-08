@@ -143,5 +143,17 @@ maven, tomcat
   
   3、编写xml：编写的xml通常会和被实现的dao同名
 
+  可以多阅读阅读官方文档，比如mybatis的官方文档中有一段有意思的，提到：
+  
+  “你已经见过简单映射语句的示例了，但并没有显式指定 resultMap。比如：
 
-tttttest111
+	<select id="selectUsers" resultType="map">
+		select id, username, hashedPassword
+		from some_table
+		where id = #{id}
+	</select>
+
+  上述语句只是简单地将所有的列映射到 HashMap 的键上，这由 resultType 属性指定。虽然在大部分情况下都够用，但是 HashMap 不是一个很好的领域模型。
+  你的程序更可能会使用 JavaBean 或 POJO（Plain Old Java Objects，普通老式 Java 对象）作为领域模型。MyBatis 对两者都提供了支持。”
+  
+  这一段能更好地明白xml到dao实现中映射的一些关系（通过在resultType中指定自己编写的java bean，能够将数据库中的数据很好的映射到实体）
