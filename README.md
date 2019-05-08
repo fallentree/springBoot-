@@ -128,7 +128,7 @@ maven, tomcat
   
   这一里明白两个问题："sql写在哪" 以及 "如何实现dao接口"
   
-  dao接口需要实现，实现的方式： mapper自动实现dao接口  或者  api编程方式实现dao（=>开启connection => 创建一个statement => 得到resultSet)
+  dao接口需要实现，实现的方式： mapper自动实现dao接口 （不仅需要编写xml来处理实现后sql的操作，还要有配置告诉mybatis，它帮忙自动实现的接口在哪里@MapperScan） 或者  api编程方式实现dao（=>开启connection => 创建一个statement => 得到resultSet)
   
   由于需要将数据库中的表映射到对象，所以我们还要设计相应的实体对象。
   
@@ -194,10 +194,26 @@ maven, tomcat
   
   并在信息中提供了warming：No MyBatis mapper was found in '[com.example.demo]' package. Please check your configuration.
   
-  原因是：在应用入口类：XxxApplication.java中没有加入@MapperScan("")注解；解决问题时参考了：https://blog.csdn.net/qinxian20120/article/details/80255976 具体填写的是@MapperScan("com.example.demo.dao")。（有疑问）
+  原因是：在应用入口类：XxxApplication.java中没有加入@MapperScan("")注解；解决问题时参考了：https://blog.csdn.net/qinxian20120/article/details/80255976 具体填写的是@MapperScan("com.example.demo.dao")。作用是：指定basePackages，扫描mybatis Mapper接口类（前面提到了mybatis通过mapper的方式帮助自动完成了dao接口的实现，这个注解就是帮助mybatis找到dao接口的位置）（有疑问）
   
   注解@controller以及@RequestMapping
   
   1、controller中要添加@Controller注释，Service实现要添加@Service注释，以告知spring容器
   
   2、@RequestMapping
+  
+  3、@Resource注解
+  
+  4、@RequestParam注解和@RequestBody注解，这两个注解的混淆导致了下面这个bug：
+  
+  	Failed to read HTTP message: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public xxxxxxxx.
+  
+  5、出现了问题：
+  
+  	nested exception is org.apache.ibatis.binding.BindingException: Parameter 'userName' not found. Available parameters are [arg1, arg0, param1, param2]
+
+  需要在dao接口的参数列表中添加注释@Param来指定参数名，如：
+  
+  	long registNewUser(@Param("userName")String userName, @Param("password") String password);
+	
+  也就是说，写在注解后面的那个参数名是没用的（完全可以瞎写），这也是很好理解的，就是编译的时候把参数变成了param1, param2这样的形参，而和它原来的名字没一点关系，这时候就要用注解指定。
