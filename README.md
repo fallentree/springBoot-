@@ -204,11 +204,37 @@ maven, tomcat
   
   3、@Resource注解
   
-  4、@RequestParam注解和@RequestBody注解，这两个注解的混淆导致了下面这个bug：
+  #### 4、@RequestParam注解和@RequestBody注解
+  
+  这两个注解的混淆导致了下面这个bug：
   
   	Failed to read HTTP message: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public xxxxxxxx.
   
-  5、出现了问题：
+  ##### @RequestParam
+  
+  注解中没写，require = false 还导致了这个bug：
+  
+  	Required String parameter 'userName' is not present
+	
+  设置完后@RequestParam注解还导致过下面这个问题：
+  
+  	Optional long parameter 'userAccount' is present but cannot be translated into a null value due to being ...
+
+  原因是由于设置成“非必须”的，所以这个参数有可能接受null的传递，但是原来的形参列表中，参数类型是long，不能被转化成null，改成Long（对象类型）即可。
+  
+  出现了问题：在通过postman post一个json数据给后端时，插入数据库的数据全是null，经过排查是postman传递的数据并没被接受。
+  
+  原因是@RequestParam接受的参数需要是表单类型的数据，即form-data类型，所以在postman中修改成表单即可。
+  
+  5、@ResponseBody注解：
+  
+  这个注解的缺失导致了下面问题：
+  
+  	Unknown return value type: java.lang.Integer
+	
+  在此方法上写上注解@ResponseBody就没问题了。
+  
+  6、出现了问题：
   
   	nested exception is org.apache.ibatis.binding.BindingException: Parameter 'userName' not found. Available parameters are [arg1, arg0, param1, param2]
 
@@ -217,3 +243,11 @@ maven, tomcat
   	long registNewUser(@Param("userName")String userName, @Param("password") String password);
 	
   也就是说，写在注解后面的那个参数名是没用的（完全可以瞎写），这也是很好理解的，就是编译的时候把参数变成了param1, param2这样的形参，而和它原来的名字没一点关系，这时候就要用注解指定。
+  
+  7、出现了问题：
+  
+  	Invalid bound statement (not found): com.example.demo.dao.userDao.registNewUser
+  
+  就是mapper文件扫描不到，导致无法绑定，这个时候就体现了mybatis.mapper-locations配置的重要性
+    
+  至此，一个超级超级超级小的demo打通了
