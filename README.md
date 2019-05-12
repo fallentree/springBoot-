@@ -5,6 +5,12 @@
 ------------------------------------------------------------------
 maven, tomcat
 
+## 0、maven的使用
+
+用idea创建java项目，并添加maven管理（先创建再添加），参考：https://blog.csdn.net/xyh930929/article/details/78936611
+
+创建 --> 修改项目结构（参考：https://blog.csdn.net/qq_27093465/article/details/52912444 ） --> 添加maven管理
+
 ## 1、创建
 
 1.1 使用spring initializr（Create Spring Boot applications using Spring Boot Starters)初始化spring boot
