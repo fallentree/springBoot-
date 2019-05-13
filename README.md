@@ -234,6 +234,8 @@ maven, tomcat
   
   5、@ResponseBody注解：
   
+  ##### 这里@ResponseBody(方法级别注解)和@RestController(类级别注解)都提供了将对象转化成json数据的动态代理
+  
   这个注解的缺失导致了下面问题：
   
   	Unknown return value type: java.lang.Integer
