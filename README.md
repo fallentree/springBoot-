@@ -192,6 +192,8 @@ maven, tomcat
   
   ### 3.6 controller的实现
   
+  #### 关于api编写的问题，restful接口具体参考：https://blog.csdn.net/xiaoqiangyonghu/article/details/80664983
+  
   controller实现并启动tomcat的时候出现过这样一个问题：
   
   	Error creating bean with name 'userServiceImpl': Injection of resource dependencies failed; 
