@@ -134,13 +134,13 @@ maven, tomcat
   
   这一里明白两个问题："sql写在哪" 以及 "如何实现dao接口"
   
-  dao接口需要实现，实现的方式： mapper自动实现dao接口 （不仅需要编写xml来处理实现后sql的操作，还要有配置告诉mybatis，它帮忙自动实现的接口在哪里@MapperScan） 或者  api编程方式实现dao（=>开启connection => 创建一个statement => 得到resultSet)
+  dao接口需要实现，实现的方式： mapper自动实现dao接口 （不仅需要编写xml来  处理实现后sql的操作  以及将接口和xml绑定（namespace），还要有配置告诉mybatis，它帮忙自动实现的接口在哪里@MapperScan） 或者  api编程方式实现dao（=>开启connection => 创建一个statement => 得到resultSet)
   
   由于需要将数据库中的表映射到对象，所以我们还要设计相应的实体对象。
   
   考虑：
   
-  	1、实体对象 entity 对象中的属性一般是private（为什么）
+  	1、实体对象 entity 对象中的属性一般是private（为什么），写出get/set方法
   	2、dao接口  dao
   	3、sql的编写 xml
   
@@ -148,7 +148,12 @@ maven, tomcat
   
   2、到了dao的编写，前面一直在描述dao是什么，那么dao接口到底要写些什么
   
-  DAO层所定义的接口里的方法都大同小异，这是由我们在DAO层对数据库访问的操作来决定的，对数据库的操作，我们基本要用到的就是新增，更新，删除，查询等方法。因而DAO层里面基本上都应该要涵盖这些方法对应的操作。除此之外，可以定义一些自定义的特殊的对数据库访问的方法。   
+  DAO层所定义的接口里的方法都大同小异，这是由我们在DAO层对数据库访问的操作以及与前端定的接口一起来决定的。
+  
+  对数据库的操作，我们基本要用到的就是新增，更新，删除，查询等方法（CRUD，总体是这些，但还有分类，比如检索单个对象和所有对象）。因而DAO层里面基本上都应该要涵盖这些方法对应的操作。除此之外，可以定义一些自定义的特殊的对数据库访问的方法。   
+  
+  dao的接口需要传递什么参数呢？（自定义对象？可以，但是要求：
+  1、要在对象参数前面加@Param，2、xml里面sql语句用objectname.attributeName，3、sql语句可以像一般那样只处理部分字段，也可以接受null）
   
   3、编写xml：编写的xml通常会和被实现的dao同名
 
@@ -251,6 +256,10 @@ maven, tomcat
   	long registNewUser(@Param("userName")String userName, @Param("password") String password);
 	
   也就是说，写在注解后面的那个参数名是没用的（完全可以瞎写），这也是很好理解的，就是编译的时候把参数变成了param1, param2这样的形参，而和它原来的名字没一点关系，这时候就要用注解指定。
+  
+    该注解的缺失还导致过问题：
+	
+	org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'usex' in 'com.example.java.entity.user'
   
   7、出现了问题：
   
