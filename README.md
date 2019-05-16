@@ -172,6 +172,14 @@ maven, tomcat
   
   这一段能更好地明白xml到dao实现中映射的一些关系（通过在resultType中指定自己编写的java bean，能够将数据库中的数据很好的映射到实体）。更多在http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html 的“结果映射”中。
   
+  一些特殊的xml的编写：
+  
+  模糊查询：http://www.cnblogs.com/MaxElephant/p/8418276.html
+  
+  	select * from m_device
+        where device_name like "%"#{deviceName}"%"
+        or device_alias like "%"#{deviceName}"%"
+  
   3.4.2 dao测试
   spring boot使用junit进行测试一直无法完成。
   
