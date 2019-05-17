@@ -179,6 +179,12 @@ maven, tomcat
   	select * from m_device
         where device_name like "%"#{deviceName}"%"
         or device_alias like "%"#{deviceName}"%"
+	
+  获取自增主键值(insert语句返回自增值)：两个关键：useGeneratedKeys和keyProperty（返回数据的保存位置）
+  
+    <insert id="registNewUser" parameterType="com.example.demo.entity.user" useGeneratedKeys="true" keyProperty="userAccount">
+        insert into user(user_name, password) value (#{userx.userName}, #{userx.password})
+    </insert>
   
   3.4.2 dao测试
   spring boot使用junit进行测试一直无法完成。
