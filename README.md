@@ -277,6 +277,8 @@ maven, tomcat
 	
 	org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'usex' in 'com.example.java.entity.user'
   
+  当然这也很有可能是因为mapper和entity之间的变量名抄写出了问题
+  
   7、出现了问题：
   
   	Invalid bound statement (not found): com.example.demo.dao.userDao.registNewUser
